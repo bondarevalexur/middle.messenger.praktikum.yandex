@@ -1,0 +1,14 @@
+.singUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 500px;
+
+  margin: auto;
+  padding: 12px;
+
+  box-shadow: var(--dark_sea) 0 0 16px;
+
+  border-radius: 8px;
+}

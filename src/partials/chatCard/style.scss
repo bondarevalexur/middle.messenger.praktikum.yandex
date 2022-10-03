@@ -1,0 +1,56 @@
+.partial {
+  &--listItem {
+
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+    gap: 8px;
+
+    padding:12px;
+
+    border-radius: 12px;
+    border: var(--bright_orange) 1px solid;
+
+    transition: .2s;
+    &:hover{
+      background: var(--light_sea);
+      transform: scale(1.03);
+    }
+
+    &__photo {
+      object-fit: cover;
+      width: 60px;
+      height: 60px;
+
+      border-radius: 20px;
+
+      grid-row: 1/3;
+    }
+
+    &__message{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__active{
+      background: var(--bright_sea);
+      color: white;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 50%;
+
+      position: relative;
+
+      top:-10px;
+      left: 12px;
+    }
+  }
+}
+
+

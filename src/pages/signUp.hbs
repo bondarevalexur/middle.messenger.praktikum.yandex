@@ -1,0 +1,18 @@
+{{!< main}}
+
+<div class="singUp pl-24 pr-24 text-24">
+    <h1 class="text-black mb-24">Регистрация</h1>
+    <form method="post">
+        {{> input/index label="Почта" name="email" type="text" id="email" class="mb-20"}}
+        {{> input/index label="Логин" name="login" type="text" id="login" class="mb-20"}}
+        {{> input/index label="Имя" name="name" type="text" id="name" class="mb-20"}}
+        {{> input/index label="Фамилия" name="surName" type="text" id="surName" class="mb-20"}}
+        {{> input/index label="Телефон" name="phone" type="tel" id="phone" class="mb-20"}}
+        {{> input/index label="Пароль" name="password" type="password" id="password" class="mb-20"}}
+        {{> input/index label="Пароль (повтор)" name="secondPassword" type="password" id="secondPassword" class="mb-20"}}
+
+
+        {{> button/index text="Зарегестрироваться" class="w-full text-20 mb-12 text-black"}}
+        {{> button/index text="Войти" class="w-full text-20 mb-12 text-black"}}
+    </form>
+</div>
