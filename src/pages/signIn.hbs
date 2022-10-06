@@ -1,0 +1,14 @@
+{{!< main}}
+
+<div class="singIn text-24">
+    <h1 class="text-black mb-24">ВХОД</h1>
+    <form method="post">
+        {{> input/index label="Логин" name="login" type="text" id="login" class="mb-20"}}
+        {{> input/index label="Пароль" name="password" type="text" id="password" class="mb-20"}}
+
+
+        {{> button/index text="Вход" class="w-full text-20 mb-12 text-black"}}
+
+        {{> link/index text="Нет аккаунта" href="./signUp.hbs"  class="w-full text-16 mb-40"}}
+    </form>
+</div>

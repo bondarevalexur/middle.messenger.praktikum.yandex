@@ -1,0 +1,25 @@
+.profile {
+  width: 700px;
+  margin: auto;
+
+  padding: 40px;
+  box-shadow: var(--dark_sea) 0 0 16px;
+  border-radius: 8px;
+
+  &__header {
+    text-align: center;
+  }
+
+  &__link {
+    border-bottom: var(--dark_sea) 1px solid;
+  }
+
+  &__photo {
+    width: 300px;
+    display: block;
+    border: var(--dark_sea) 3px solid;
+    border-radius: 30px;
+
+    margin: 30px auto 40px auto;
+  }
+}

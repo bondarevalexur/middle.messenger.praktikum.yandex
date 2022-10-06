@@ -1,0 +1,21 @@
+{{!< main}}
+
+<div class="chat-page w-full">
+    <section class="chat-list">
+        {{#each registerChats.chats}}
+            <a href="./chat.hbs" class="mb-8 block">
+                {{> chatCard/index this id="id" class="w-full mb-80"}}
+            </a>
+        {{/each}}
+    </section>
+    <section class="chat">
+        {{#each chat.messages}}
+            {{> message/index this id="id" index=@index}}
+        {{/each}}
+
+        <div class="chat__send-message send-message">
+            {{> textArea/index class="send-message__input"}}
+            {{> button/index class="send-message__button" text=">>"}}
+        </div>
+    </section>
+</div>

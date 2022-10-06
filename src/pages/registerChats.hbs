@@ -1,0 +1,11 @@
+{{!< main}}
+
+<div class="chat-page w-full">
+    <section class="chat-list">
+        {{#each registerChats.chats}}
+            <a href="./chat.hbs" class="mb-8 block">
+                {{> chatCard/index this id="id" class="w-full mb-80"}}
+            </a>
+        {{/each}}
+    </section>
+</div>

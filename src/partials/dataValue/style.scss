@@ -1,0 +1,11 @@
+.partial {
+  &--dataValue{
+    display: flex;
+    padding-bottom: 2px;
+    justify-content: space-between;
+
+    border-bottom: var(--dark_sea) 1px solid;
+  }
+}
+
+
