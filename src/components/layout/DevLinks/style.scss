@@ -1,0 +1,13 @@
+.devPartialHeader {
+  padding-top: 40px;
+
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__links {
+    color: #006b53;
+    margin-right: 20px;
+  }
+}
