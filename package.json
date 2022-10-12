@@ -24,11 +24,12 @@
   "homepage": "https://github.com/bondarevalexur/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@parcel/transformer-sass": "^2.0.1",
     "@parcel/transformer-webmanifest": "2.7.0",
     "@types/node": "18.8.3",
     "@typescript-eslint/eslint-plugin": "5.39.0",
     "@typescript-eslint/parser": "5.39.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
     "eslint": "8.25.0",
     "eslint-config-airbnb": "19.0.4",
     "parcel": "2.7.0",
