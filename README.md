@@ -9,9 +9,17 @@
    - @anikin/parcel-transformer-handlebars: 1.0.9
    - @parcel/transformer-sass: 2.7.0
    - @parcel/transformer-webmanifest: 2.7.0
+   - @types/node: 18.8.3
+   - @typescript-eslint/eslint-plugin: 5.39.0
+   - @typescript-eslint/parser": 5.39.0
+   - eslint": 8.25.0",
+   - eslint-config-airbnb: 19.0.4
    - parcel: 2.7.0
    - postcss-import: 15.0.0
-   - express: 4.18.1
+   - postcss-import: 12.0.1
+   - prettier: 2.7.1
+   - stylelint: 14.13.0
+   - typescript: 4.8.4
 
 # Запуск
 

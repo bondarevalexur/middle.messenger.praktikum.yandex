@@ -1,0 +1,58 @@
+:root {
+  --mid_sea: #00a480;
+  --sea: #1f7b67;
+  --dark_sea: #006b53;
+  --bright_sea: #34d2af;
+  --light_sea: #5ed2b8;
+
+  --mid_orange: #ff6200;
+  --orange: #bf6730;
+  --dark_orange: #a63f00;
+  --bright_orange: #ff8940;
+  --light_orange: #ffa873;
+
+  --white: #ffffff;
+  --red: #ff0000;
+  --black: #000000;
+  --gray: #808080ff;
+}
+
+$colors: "white", "red", "black", "gray", "mid_sea", "sea", "dark_sea",
+  "bright_sea", "light_sea", "mid_orange", "orange", "dark_orange",
+  "bright_orange", "light_orange";
+
+@each $color in $colors {
+  .text-#{$color} {
+    color: var(--#{$color});
+  }
+
+  .hover\:text-#{$color}:hover {
+    color: var(--#{$color});
+  }
+
+  .focus\:text-#{$color}:focus {
+    color: var(--#{$color});
+  }
+
+  .active\:text-#{$color}:active {
+    color: var(--#{$color});
+  }
+}
+
+@each $color in $colors {
+  .bg-#{$color} {
+    background-color: var(--#{$color});
+  }
+
+  .hover\:bg-#{$color}:hover {
+    background-color: var(--#{$color});
+  }
+
+  .focus\:bg-#{$color}:focus {
+    background-color: var(--#{$color});
+  }
+
+  .active\:bg-#{$color}:active {
+    background-color: var(--#{$color});
+  }
+}
