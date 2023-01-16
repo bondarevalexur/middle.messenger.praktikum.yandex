@@ -3,9 +3,9 @@ import Block from "../../core/Block";
 import "./style.scss";
 
 interface DataValueProps {
-  labelClass: string;
-  valueClass: string;
-  className: string;
+  labelClass: string[];
+  valueClass: string[];
+  className: string[];
   value: string;
   label: string;
   id: string;

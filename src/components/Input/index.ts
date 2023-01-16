@@ -49,10 +49,7 @@ class Input extends Block {
 
       const newInput = this.getContent()?.querySelector("input");
       newInput?.focus();
-      newInput?.setSelectionRange(
-        newInput?.value.length,
-        newInput?.value.length
-      );
+      newInput?.setSelectionRange(newInput?.value.length, newInput?.value.length);
     };
 
     super({
@@ -67,8 +64,12 @@ class Input extends Block {
     });
   }
 
+  getValue() {
+    return this.state.value;
+  }
+
   getError() {
-    console.log(this.state.error);
+    // console.log(this.state.error);
     return this.state.error;
   }
 
@@ -77,17 +78,17 @@ class Input extends Block {
   }
 
   protected render(): string {
-    console.log();
     // language=hbs
     return `
-            <p class="partial--wrapper {{className}}">
-                <label class="partial--label-input" for="{{name}}">{{label}}</label>
-                <input class="partial--input" type="{{type}}" name="{{name}}" placeholder="{{placeholder}}"
-                       required="{{required}}"
-                       id="{{name}}" value="{{this.value}}">
-                <span class="input__error p4">{{this.error}}</span>
-            </p>
-        `;
+        <p class="partial--wrapper {{className}}">
+            <label class="partial--label-input" for="{{name}}">{{label}}</label>
+            <input class="partial--input" type="{{type}}" name="{{name}}"
+                   placeholder="{{placeholder}}"
+                   required="{{required}}"
+                   id="{{name}}" value="{{this.value}}">
+            <span class="input__error p4">{{this.error}}</span>
+        </p>
+    `;
   }
 }
 

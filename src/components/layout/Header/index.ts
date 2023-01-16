@@ -1,16 +1,14 @@
 import Block from "../../../core/Block";
 
-import { getIsLog, logOut } from "../../../core/Auth";
-
 import "./style.scss";
 
 class Header extends Block {
   constructor() {
     super({
-      isAuth: getIsLog(),
+      isAuth: false,
 
       logOut: (e: MouseEvent) => {
-        logOut();
+        console.log("loguot");
         window.location.replace((window.location.pathname, "/login"));
       },
     });

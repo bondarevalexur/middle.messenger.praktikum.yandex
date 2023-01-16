@@ -4,11 +4,17 @@
   align-items: center;
 
   width: 500px;
+  max-width: 500px;
 
   margin: auto;
-  padding: 12px;
+  padding: 32px;
 
   box-shadow: var(--dark_sea) 0 0 16px;
 
   border-radius: 8px;
+
+  &__login {
+    display: block;
+    text-align: center;
+  }
 }

@@ -27,7 +27,6 @@ class TextArea extends Block {
     validate = () => {},
   }: TextAreaProps) {
     const onChangeName = (e?: InputEvent) => {
-      console.log(e);
       e?.preventDefault();
       if (e) {
         if (e.data) {
@@ -65,10 +64,7 @@ class TextArea extends Block {
       const newInput = this.getContent()?.querySelector("textarea");
 
       newInput?.focus();
-      newInput?.setSelectionRange(
-        newInput?.value?.length,
-        newInput?.value?.length
-      );
+      newInput?.setSelectionRange(newInput?.value?.length, newInput?.value?.length);
     };
 
     super({
