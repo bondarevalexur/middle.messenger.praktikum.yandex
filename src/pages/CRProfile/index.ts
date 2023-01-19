@@ -14,7 +14,7 @@ import controller from "./controller";
 
 class CRProfile extends Block {
   constructor() {
-    const getComponent: any = () => this;
+    const getComponent = () => this;
 
     const onButton = controller(getComponent);
 
@@ -25,6 +25,12 @@ class CRProfile extends Block {
       validatePhone,
       validatePassword,
       onButton,
+      onChangePassword: () => {
+        window.router.go("/change-password");
+      },
+      onBack: () => {
+        window.router.go("/profile");
+      },
     });
   }
 
@@ -81,6 +87,12 @@ class CRProfile extends Block {
                 {{/unless}}
                 {{{ Button text="Подтвердить" onClick=onButton
                            className="partial--button singUp__login w-full text-20 mt-20 mb-12 text-black"}}}
+                {{#if isEdit}}
+                    {{{ Button text="Назад" onClick=onBack
+                               className="partial--button singUp__login w-full text-20 mt-20 mb-12 text-black"}}}
+                    {{{ Button text="Сменить пароль" onClick=onChangePassword
+                               className="partial--button singUp__login w-full text-20 mt-20 mb-12 text-black"}}}
+                {{/if}}
             </form>
         </div>
     `;

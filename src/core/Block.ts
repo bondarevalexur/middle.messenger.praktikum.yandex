@@ -48,6 +48,18 @@ export default class Block<P = any> {
     eventBus.emit(Block.EVENTS.INIT, this.props);
   }
 
+  getState() {
+    return this.state;
+  }
+
+  getChildren() {
+    return this.children;
+  }
+
+  getRefs() {
+    return this.refs;
+  }
+
   _registerEvents(eventBus: EventBus<Events>) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));

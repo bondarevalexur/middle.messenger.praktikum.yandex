@@ -44,11 +44,6 @@ export const routes = [
     shouldAuthorized: false,
   },
   {
-    pathname: "/SingUp",
-    block: getScreenComponent(Screens.SingUp),
-    shouldAuthorized: true,
-  },
-  {
     pathname: "/error404",
     block: getScreenComponent(Screens.Error404),
     shouldAuthorized: false,
@@ -66,7 +61,7 @@ export const routes = [
 ];
 
 async function initApp() {
-  const response: any = await Auth.read();
+  const response = await Auth.read();
 
   if (response.status === 401) {
     // Router.go("/login");
@@ -93,8 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     .use(routes[4])
     .use(routes[5])
     .use(routes[6])
-    .use(routes[7])
-    .use(routes[8]);
+    .use(routes[7]);
 
   window.router = Router;
   window.store = store;

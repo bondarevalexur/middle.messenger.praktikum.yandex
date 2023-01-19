@@ -3,8 +3,8 @@ import { userStore } from "./userStore";
 import parse from "../helpers/parse";
 
 class chatApi {
-  public socket: any;
-  public updateListeners: any;
+  public socket: WebSocket | undefined;
+  public updateListeners: void[];
 
   constructor() {
     this.updateListeners = [];
@@ -22,6 +22,7 @@ class chatApi {
           );
         })
         .then((socket) => {
+          socket.addEventListener("qa", (e) => {});
           this.socket = socket;
           this.addListeners();
         })
@@ -31,23 +32,16 @@ class chatApi {
     }
   }
 
-  onUpdate(listener: any) {
+  onUpdate(listener: void) {
     this.updateListeners.push(listener);
   }
 
   async addListeners() {
-    this.socket.addEventListener("open", async () => {
+    this.socket?.addEventListener("open", async () => {
       console.log("Соединение установлено");
-
-      // this.socket.send(
-      //   JSON.stringify({
-      //     content: "Моё первое сообщение миру!",
-      //     type: "message",
-      //   })
-      // );
     });
 
-    this.socket.addEventListener("close", (event: any) => {
+    this.socket?.addEventListener("close", (event: any) => {
       if (event.wasClean) {
         console.log("Соединение закрыто чисто");
       } else {
@@ -57,7 +51,7 @@ class chatApi {
       console.log(`Код: ${event.code} | Причина: ${event.reason}`);
     });
 
-    this.socket.addEventListener("message", async (event: any) => {
+    this.socket?.addEventListener("message", async (event: any) => {
       // console.log("Получены данные", event.data);
       console.log("Получены данные");
       const data = await parse(event.data);
@@ -72,21 +66,21 @@ class chatApi {
       // await window.store.dispatch({ messages: data });
     });
 
-    this.socket.addEventListener("error", (event: any) => {
+    this.socket?.addEventListener("error", (event: any) => {
       console.log("Ошибка", event.message);
     });
   }
 
-  send(message: any, callback: any) {
+  send(message: string, callback: () => void) {
     this.waitForConnection(() => {
-      this.socket.send(message);
+      this.socket?.send(message);
       if (typeof callback !== "undefined") {
         callback();
       }
     }, 1000);
   }
 
-  waitForConnection(callback: any, interval: any) {
+  waitForConnection(callback: () => void, interval: number) {
     if (this.socket?.readyState === 1) {
       callback();
     } else {

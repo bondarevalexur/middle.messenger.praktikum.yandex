@@ -3,7 +3,7 @@ import Block from "../../../core/Block";
 import "./style.scss";
 
 class Main extends Block {
-  constructor(props: any) {
+  constructor(props: Indexed) {
     super(props);
   }
 

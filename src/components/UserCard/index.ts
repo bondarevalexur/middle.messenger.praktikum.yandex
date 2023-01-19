@@ -7,7 +7,7 @@ class UserCard extends Block {
   urlSearchParams = new URLSearchParams(window.location.search);
   chatId = this.urlSearchParams.get("id");
 
-  constructor({ props, isHideActions }: any) {
+  constructor({ props, isHideActions }: Indexed) {
     super({
       ...props,
       isHideActions,
@@ -21,9 +21,9 @@ class UserCard extends Block {
       deleteUser: () => {
         chatsStore.deleteUser({ chatId: this.chatId, users: [this.props.id] });
       },
-      avatar:
-        props?.avatar ??
-        "https://avatars.mds.yandex.net/i?id=b6f75588a8210c09136fcd3b7aff4e7b3ad07c06-4462005-images-thumbs&n=13",
+      avatar: props?.avatar
+        ? `https://ya-praktikum.tech/api/v2/resources/${props?.avatar}`
+        : "https://avatars.mds.yandex.net/i?id=b6f75588a8210c09136fcd3b7aff4e7b3ad07c06-4462005-images-thumbs&n=13",
     });
   }
 

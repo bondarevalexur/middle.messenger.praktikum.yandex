@@ -5,6 +5,7 @@ import "./style.scss";
 import { data } from "../../data/data";
 import { validateLogin } from "../../helpers/validate";
 import controller from "./controller";
+import Input from "../../components/Input";
 
 class Login extends Block {
   constructor() {
@@ -19,9 +20,11 @@ class Login extends Block {
       const inputs = [...document.getElementsByTagName("input")];
       const formData: Indexed = {};
 
-      const errors = Object.values(this.children).map((child: any) => {
-        child?.trigger && child?.trigger();
-        return child?.getError && child?.getError();
+      const errors = Object.values(this.children).map((child: Block) => {
+        if (child instanceof Input) {
+          child?.trigger();
+          return child?.getError();
+        }
       });
 
       if (errors.filter((error) => Boolean(error))?.length < 1) {

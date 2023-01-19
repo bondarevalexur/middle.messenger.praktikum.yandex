@@ -8,7 +8,7 @@ async function controller(data: Indexed[]) {
     }
   });
 
-  const resp: any = await Auth.signup(formData as SignupData);
+  const resp = await Auth.signup(formData as SignupData);
 
   if (resp.status === 200) {
     alert("Профиль создан");

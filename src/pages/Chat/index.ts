@@ -23,8 +23,8 @@ class Chat extends Block {
     };
 
     window.store.on("changed", () => {
-      const newStore: any = window.store.getState();
-      const prevStore: any = window.store.getPrevState();
+      const newStore = window.store.getState();
+      const prevStore = window.store.getPrevState();
 
       if (
         !isEqual(
@@ -85,11 +85,7 @@ class Chat extends Block {
     // language=hbs
     return `
         <div class="chat-page w-full">
-            {{{ Link text="Профиль" href="/profile"
-                     className="w-full text-16 ml-20 mb-40 profile-link"}}}
-            {{{ Link text="Чаты" href="/chats"
-                     className="w-full text-16 ml-100 mb-40 profile-link"}}}
-                {{{Chats}}}
+            {{{Chats}}}
             <section class="chat">
                 {{#each mess}}
                     {{{ Message this=this id="id"}}}
@@ -118,7 +114,6 @@ class Chat extends Block {
                 </section>
             {{/if}}
         </div>
-
     `;
   }
 }

@@ -3,7 +3,7 @@ import Block from "../../core/Block";
 import "./input.scss";
 
 class AsyncSearch extends Block {
-  constructor(props: any) {
+  constructor(props: Indexed) {
     super({ ...props });
   }
 

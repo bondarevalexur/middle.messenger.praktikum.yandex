@@ -3,11 +3,11 @@ import Block from "../../core/Block";
 import "./input.scss";
 
 interface InputProps {
-  onChange?: (e: InputEvent | any) => void;
-  validate?: (input: InputEvent | any) => void;
+  onChange?: (e: InputEvent | Indexed) => void;
+  validate?: (input: InputEvent | Indexed) => void;
   type?: "text" | "password" | "email";
   placeholder?: string;
-  value?: string | any;
+  value?: string | Block | Indexed;
   error?: string;
   name?: string;
   label?: string;

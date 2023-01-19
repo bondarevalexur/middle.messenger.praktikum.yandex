@@ -4,14 +4,14 @@ import "./style.scss";
 import convertDate from "../../helpers/convertDate";
 
 class ChatCard extends Block {
-  constructor({ props }: any) {
+  constructor({ props }: Indexed) {
     super({
       ...props,
       messTime: convertDate(props?.last_message?.time),
       events: {
         click: () => {
           window.router.go(`/chat`);
-          window.location.search = `?id=${props.id}`;
+          window.router.go(`/chat?id=${props.id}`);
         },
       },
       onAvatar: () => {},

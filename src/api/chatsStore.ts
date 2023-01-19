@@ -60,7 +60,7 @@ export const chatsStore = {
     const res = await requests.put("/chats/users", data);
     if (res.status === 200) {
       window.store.dispatch({
-        users: window.store.getState().findUsers.find((user: any) => user.id !== data.users[0]),
+        users: window.store.getState().findUsers.find((user: Indexed) => user.id !== data.users[0]),
       });
     }
   },
@@ -68,7 +68,7 @@ export const chatsStore = {
     const res = await requests.delete("/chats/users", data);
     if (res.status === 200) {
       window.store.dispatch({
-        users: window.store.getState().users.filter((user: any) => user.id !== data.users[0]),
+        users: window.store.getState().users.filter((user: Indexed) => user.id !== data.users[0]),
       });
     }
   },

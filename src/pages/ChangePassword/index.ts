@@ -10,6 +10,7 @@ import {
   validatePassword,
 } from "../../helpers/validate";
 import { requests } from "../../core/HTTPservise";
+import Input from "../../components/Input";
 
 class ChangePassword extends Block {
   constructor() {
@@ -17,9 +18,11 @@ class ChangePassword extends Block {
       e.preventDefault();
 
       const data: Indexed = {};
-      const errors = Object.values(this.children).map((child: any) => {
-        child?.trigger && child?.trigger();
-        return child?.getError && child?.getError();
+      const errors = Object.values(this.children).map((child: Block) => {
+        if (child instanceof Input) {
+          child?.trigger();
+          return child?.getError();
+        }
       });
 
       if (errors.filter((error) => Boolean(error))?.length < 1) {
@@ -43,6 +46,9 @@ class ChangePassword extends Block {
       validatePhone,
       validatePassword,
       onButton,
+      onBack: () => {
+        window.router.go("/create-profile");
+      },
     });
   }
 
@@ -72,6 +78,8 @@ class ChangePassword extends Block {
                           id="newPassword"
                           validate=validatePassword}}}
                 {{{ Button text="Сменить пароль" onClick=onButton
+                           className="partial--button singUp__login w-full text-20 mt-20 mb-12 text-black"}}}
+                {{{ Button text="Назад" onClick=onBack
                            className="partial--button singUp__login w-full text-20 mt-20 mb-12 text-black"}}}
             </form>
         </div>

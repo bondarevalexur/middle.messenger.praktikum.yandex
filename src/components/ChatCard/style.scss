@@ -55,7 +55,7 @@
 
   &__actions {
     position: absolute;
-    z-index: 100;
+    z-index: 999;
     top: 0;
     left: 0;
     background: rgba(128, 128, 128, 0.72);
@@ -71,7 +71,7 @@
 
     .partial--button {
       padding: 4px;
-      height: auto!important;
+      height: auto !important;
       margin-bottom: 4px;
     }
   }

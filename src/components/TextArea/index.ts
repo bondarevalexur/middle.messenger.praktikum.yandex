@@ -3,10 +3,10 @@ import Block from "../../core/Block";
 import "./style.scss";
 
 interface TextAreaProps {
-  onChange?: (e: InputEvent | any) => void;
-  validate?: (input: InputEvent | any) => void;
+  onChange?: (e: InputEvent | Indexed) => void;
+  validate?: (input: InputEvent | Indexed) => void;
   placeholder?: string;
-  value?: string | any;
+  value?: string | Block | Indexed;
   error?: string;
   name?: string;
   label?: string;

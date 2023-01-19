@@ -7,12 +7,17 @@ import parseResp from "../../helpers/parse";
 import { chatsStore } from "../../api/chatsStore";
 
 class Chats extends Block {
-  constructor(props: any) {
-    function onclickGo() {
-      router.go("/chat");
-    }
-
-    super({ ...props });
+  constructor(props: Indexed) {
+    super({
+      ...props,
+      isChat: window.location.pathname !== "/chats",
+      onProfile: () => {
+        window.router.go("/profile");
+      },
+      onChats: () => {
+        window.router.go("/chats");
+      },
+    });
   }
 
   isNewChat = false;
@@ -39,22 +44,26 @@ class Chats extends Block {
   render() {
     // language=hbs
     return `
-       
-            <section class="chat-list">
-                {{{ Link text="Профиль" href="/profile"
-                         className="w-full text-16 ml-20 mb-40 profile-link"}}}
-                {{{ Button text="Создать чат" onClick=onButton ref="button"}}}
-                {{#if isNewChat }}
-                    <div>
-                        {{{ Input label="Название" required="true" name="title" type="title"
-                                  id="title" ref="title"}}}
-                        {{{ Button text="Чат" onClick=onChat }}}
-                    </div>
+
+        <section class="chat-list">
+            <div class="flex mb-8">
+                {{{ Button text="Профиль" onClick=onProfile}}}
+                {{#if isChat}}
+                    {{{ Button text="Чаты" onClick=onChats}}}
                 {{/if}}
-                {{#each chats}}
-                    {{{ChatCard props=this}}}
-                {{/each}}
-            </section>
+                {{{ Button text="Создать чат" onClick=onButton ref="button"}}}
+            </div>
+            {{#if isNewChat }}
+                <div>
+                    {{{ Input label="Название" required="true" name="title" type="title"
+                              id="title" ref="title"}}}
+                    {{{ Button text="Чат" onClick=onChat }}}
+                </div>
+            {{/if}}
+            {{#each chats}}
+                {{{ChatCard props=this}}}
+            {{/each}}
+        </section>
     `;
   }
 }

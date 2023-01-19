@@ -35,7 +35,7 @@ export const userStore = {
     }
   },
 
-  findUsers: async (data: any) => {
+  findUsers: async (data: Indexed) => {
     const res = await requests.post("/user/search", data);
 
     if (res.status === 200) {

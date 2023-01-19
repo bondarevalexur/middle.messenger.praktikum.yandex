@@ -1,4 +1,4 @@
-async function parseResp(response: any) {
+async function parseResp(response: string) {
   try {
     const data = await JSON.parse(response);
     return data;
