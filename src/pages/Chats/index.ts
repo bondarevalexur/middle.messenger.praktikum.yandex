@@ -5,6 +5,7 @@ import { requests } from "../../core/HTTPservise";
 import parseResp from "../../helpers/parse";
 
 import { chatsStore } from "../../api/chatsStore";
+import isEqual from "../../helpers/isEqueal";
 
 class Chats extends Block {
   constructor(props: Indexed) {
@@ -23,6 +24,8 @@ class Chats extends Block {
   isNewChat = false;
 
   async componentDidMount() {
+    await chatsStore.getChats();
+
     this.setState({
       isNewChat: this.isNewChat,
       onChat: async () => {
@@ -32,13 +35,16 @@ class Chats extends Block {
         this.isNewChat = !this.isNewChat;
         this.setState({ isNewChat: this.isNewChat });
       },
+      chats: window.store.getState().chats,
     });
 
-    const res = await requests.get("/chats");
-    if (res.status === 200) {
-      const data = await parseResp(res.response);
-      this.setState({ chats: data, num: 123 });
-    }
+    window.store.on("changed", async () => {
+      const newStore = window.store.getState();
+      const prevStore = window.store.getPrevState();
+      if (!isEqual(newStore.chats, prevStore.chats) || !this?.getState()?.chats) {
+        this.setState({ chats: window.store.getState().chats, num: 123 });
+      }
+    });
   }
 
   render() {

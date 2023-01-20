@@ -25,9 +25,10 @@ export const chatsStore = {
     }
   },
   deleteChat: async (chatId: number) => {
-    const res = await requests.delete("/user/profile", { chatId });
+    const res = await requests.delete("/chats", { chatId });
     if (res.status === 200) {
       alert("Чат удален");
+      chatsStore.getChats();
     }
   },
   getArchiveChats: async (data: Indexed) => {

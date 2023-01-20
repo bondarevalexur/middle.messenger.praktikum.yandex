@@ -2,8 +2,6 @@ import Block from "../../core/Block";
 
 import "./chat.scss";
 
-import { data } from "../../data/data";
-
 import { chatsStore } from "../../api/chatsStore";
 
 import { userStore } from "../../api/userStore";
@@ -22,25 +20,6 @@ class Chat extends Block {
       window.socketChat.sendMessage(this.refs["textArea"].state.value);
     };
 
-    window.store.on("changed", () => {
-      const newStore = window.store.getState();
-      const prevStore = window.store.getPrevState();
-
-      if (
-        !isEqual(
-          {
-            messages: newStore.messages,
-            users: newStore.users,
-          },
-          { messages: prevStore.messages, users: prevStore.users }
-        )
-      ) {
-        this.setState({
-          mess: window.store.getState()?.messages,
-          users: window.store.getState()?.users,
-        });
-      }
-    });
     const onUsers = async () => {
       this.chatId && !this.isUser && (await chatsStore.getChatUsers(this.chatId));
       this.isUser = !this.isUser;
@@ -66,7 +45,6 @@ class Chat extends Block {
     };
 
     super({
-      data,
       onSend,
       onUsers,
       onSearch,
@@ -75,10 +53,36 @@ class Chat extends Block {
   }
 
   async componentDidMount() {
-    await chatsStore.getChats();
-    this.setState({ chats: chatsStore.currentChats() });
+    window.router.onUpdate(async () => {
+      await window.socketChat.updateConnection().then(() => {
+        window.socketChat.getOld();
+      });
+    });
 
-    await window.socketChat.getOld();
+    window.store.on("changed", () => {
+      const newStore = window.store.getState();
+      const prevStore = window.store.getPrevState();
+
+      console.log(window.store.getState());
+
+      if (
+        !isEqual(
+          {
+            messages: newStore.messages,
+            users: newStore.users,
+          },
+          { messages: prevStore.messages, users: prevStore.users }
+        )
+      ) {
+        this.setState({
+          mess: window.store.getState()?.messages,
+          users: window.store.getState()?.users,
+        });
+      }
+    });
+
+    await chatsStore.getChats();
+    this.setState({ chats: chatsStore.currentChats(), mess: window.store.getState()?.messages });
   }
 
   render() {

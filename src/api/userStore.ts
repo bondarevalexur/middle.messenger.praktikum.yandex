@@ -4,11 +4,21 @@ import parse from "../helpers/parse";
 export const userStore = {
   current: () => window.store.getState()?.user,
   get: async (data: Indexed) => {
-    const res = await requests.get("auth/user", data);
+    const res = await requests.get("/auth/user", data);
     if (res.status === 200) {
       try {
         const data = await JSON.parse(res.response);
         window.store.dispatch({ user: data });
+      } catch (e) {}
+    }
+  },
+  updateUserData: async () => {
+    const res = await requests.get("/auth/user");
+    if (res.status === 200) {
+      try {
+        const data = await JSON.parse(res.response);
+        window.store.dispatch({ user: data });
+        window.store.eventBus().emit("changed");
       } catch (e) {}
     }
   },
@@ -32,6 +42,14 @@ export const userStore = {
     const res = await requests.put("/user/profile", data);
     if (res.status === 200) {
       alert("данные обновлены");
+    }
+  },
+
+  sendAvatar: async (data: Indexed) => {
+    const res = await requests.put("/user/profile/avatar", data, {});
+    if (res.status === 200) {
+      alert("Аватар обновлен");
+      await userStore.updateUserData();
     }
   },
 

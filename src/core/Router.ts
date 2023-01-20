@@ -1,5 +1,6 @@
 import Block from "./Block";
 import { routes } from "../index";
+import EventBus from "./EventBus";
 
 function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
@@ -56,7 +57,11 @@ class Router {
   private currentRoute: Route | null = null;
   private history = window.history;
 
+  public updateListeners: Array<() => void>;
+
   constructor(private readonly rootQuery: string) {
+    this.updateListeners = [];
+
     if (Router.__instance) {
       return Router.__instance;
     }
@@ -64,6 +69,10 @@ class Router {
     this.routes = [];
 
     Router.__instance = this;
+  }
+
+  public onUpdate(listener: () => void) {
+    this.updateListeners.push(listener);
   }
 
   public use({
@@ -111,6 +120,8 @@ class Router {
     } else {
       route.render();
     }
+
+    this.updateListeners.forEach((listener) => listener());
   }
 
   public go(pathname: string) {

@@ -2,6 +2,7 @@ import Block from "../../core/Block";
 
 import "./style.scss";
 import convertDate from "../../helpers/convertDate";
+import { chatsStore } from "../../api/chatsStore";
 
 class ChatCard extends Block {
   constructor({ props }: Indexed) {
@@ -9,15 +10,22 @@ class ChatCard extends Block {
       ...props,
       messTime: convertDate(props?.last_message?.time),
       events: {
-        click: () => {
-          window.router.go(`/chat`);
-          window.router.go(`/chat?id=${props.id}`);
+        click: (e: Event) => {
+          const elem = e.target as HTMLElement;
+          const parentId = elem?.parentElement?.id;
+          if (parentId !== "actions") {
+            window.router.go(`/chat`);
+            window.router.go(`/chat?id=${props.id}`);
+          }
         },
       },
       onAvatar: () => {},
-      avatar:
-        props?.avatar ??
-        "https://avatars.mds.yandex.net/i?id=b6f75588a8210c09136fcd3b7aff4e7b3ad07c06-4462005-images-thumbs&n=13",
+      avatar: props?.avatar
+        ? `https://ya-praktikum.tech/api/v2/resources/${props?.avatar}`
+        : "https://avatars.mds.yandex.net/i?id=b6f75588a8210c09136fcd3b7aff4e7b3ad07c06-4462005-images-thumbs&n=13",
+      onDelete: async () => {
+        await chatsStore.deleteChat(props.id);
+      },
     });
   }
 
@@ -49,10 +57,8 @@ class ChatCard extends Block {
             {{/if}}
 
             {{#if isActionOpen}}
-                <div class="partial__actions">
-                    {{{ Button onClick=onSend className="send-message__button" text="Удалить"}}}
-                    {{{ Button onClick=onSend className="send-message__button"
-                               text="Архивировать"}}}
+                <div class="partial__actions" id="actions">
+                    {{{ Button onClick=onDelete className="send-message__button" text="Удалить"}}}
                 </div>
             {{/if}}
         </section>`;

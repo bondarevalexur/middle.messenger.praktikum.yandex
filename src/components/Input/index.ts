@@ -36,6 +36,11 @@ class Input extends Block {
         value: input?.value,
       });
 
+      if (this.props.type === "file")
+        this.setState({
+          files: input?.files,
+        });
+
       onChange(this);
       validate(this);
 
@@ -49,7 +54,8 @@ class Input extends Block {
 
       const newInput = this.getContent()?.querySelector("input");
       newInput?.focus();
-      newInput?.setSelectionRange(newInput?.value.length, newInput?.value.length);
+      if (this.props.type !== "file")
+        newInput?.setSelectionRange(newInput?.value.length, newInput?.value.length);
     };
 
     super({
@@ -85,7 +91,7 @@ class Input extends Block {
             <input class="partial--input" type="{{type}}" name="{{name}}"
                    placeholder="{{placeholder}}"
                    required="{{required}}"
-                   id="{{name}}" value="{{this.value}}">
+                   id="{{name}}" value="{{this.value}}" title="your text">
             <span class="input__error p4">{{this.error}}</span>
         </p>
     `;

@@ -8,10 +8,14 @@ class chatApi {
 
   constructor() {
     this.updateListeners = [];
+  }
+
+  async updateConnection() {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const chatId = urlSearchParams.get("id");
+
     if (chatId) {
-      requests
+      await requests
         .post(`/chats/token/${chatId}`)
         .then((res) => {
           return JSON.parse(res.response);
@@ -92,6 +96,7 @@ class chatApi {
   }
 
   async getOld() {
+    await this.updateConnection();
     this.send(
       JSON.stringify({
         content: "0",
