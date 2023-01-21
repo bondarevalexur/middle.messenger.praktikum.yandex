@@ -1,7 +1,4 @@
 import { registerComponent } from "../core";
-import Main from "../pages/components/layout/Main";
-import Header from "../pages/components/layout/Header";
-import DevLinks from "../pages/components/layout/DevLinks";
 import Button from "../pages/components/Button";
 import Link from "../pages/components/Link";
 import Input from "../pages/components/Input";
@@ -20,10 +17,6 @@ import Login from "../pages/Login";
 import AsyncSearch from "../pages/components/AsyncSearch";
 
 export const registerComponents = () => {
-  registerComponent(Main);
-  registerComponent(Header);
-  registerComponent(DevLinks);
-
   registerComponent(Button);
   registerComponent(Link);
   registerComponent(Input);
