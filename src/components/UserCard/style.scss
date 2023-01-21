@@ -1,7 +1,10 @@
-.partial {
+.user {
   &--listItem {
+    width: 90%;
+    background: white;
     position: relative;
     display: grid;
+    margin: 0 auto 20px auto;
     grid-template-columns: 60px 1fr 60px;
     gap: 8px;
 
@@ -89,6 +92,8 @@
   right: 8px;
 
   z-index: 110;
+}
 
+.add-option-button {
 
 }

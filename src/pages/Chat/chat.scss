@@ -17,6 +17,8 @@
     margin: 10px;
     padding: 10px;
 
+    min-height: 70vh;
+
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -39,5 +41,42 @@
       align-self: center;
       height: 50px;
     }
+  }
+
+  .users {
+    position: absolute;
+    top: 62px;
+    right: 22px;
+
+    border-radius: 20px;
+
+    min-height: 70vh;
+
+    background: rgba(128, 128, 128, 0.74);
+
+    width: 300px;
+  }
+
+  .users-button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+  }
+
+  .add-users-button {
+    position: absolute;
+    top: 24px;
+    right: 120px;
+    z-index: 100;
+  }
+
+  .profile-link {
+    position: absolute;
+    top: 0;
+  }
+
+  .chat-list .profile-link {
+    display: none;
   }
 }

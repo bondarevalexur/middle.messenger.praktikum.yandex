@@ -3,9 +3,9 @@ import Block from "../../core/Block";
 import "./button.scss";
 
 interface ButtonProps {
-  text: string;
+  text?: string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 class Button extends Block {

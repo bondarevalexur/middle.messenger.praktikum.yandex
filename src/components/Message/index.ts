@@ -1,26 +1,25 @@
 import Block from "../../core/Block";
 
 import "./style.scss";
-
-interface MessageProps {
-  text: string;
-  index: string;
-}
+import convertDate from "../../helpers/convertDate";
 
 class Message extends Block {
-  constructor(props: MessageProps) {
-    super(props);
+  constructor(props: Indexed) {
+    const isMyMess = window.store.getState()?.user?.id === props.this.user_id;
+    super({ ...props.this, isMyMess, time: convertDate(props.this?.time) });
   }
 
   render() {
     // language=hbs
     return `
-            <div class="partial--message {{#if
-                    (compare (remainder index 2) "==" 0) }} partial--message_left {{else}} partial--message_right{{/if}}">
-                {{text}}
-                {{index}}
-            </div>
-        `;
+
+        <div class="partial--message 
+            {{#if isMyMess }} partial--message_left {{else}} partial--message_right{{/if}}">
+            <span class="message-text">{{content}}</span>
+            <span class="message-time">{{time}}</span>
+        </div>
+
+    `;
   }
 }
 

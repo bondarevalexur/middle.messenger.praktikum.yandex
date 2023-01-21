@@ -48,6 +48,18 @@ export default class Block<P = any> {
     eventBus.emit(Block.EVENTS.INIT, this.props);
   }
 
+  getState() {
+    return this.state;
+  }
+
+  getChildren() {
+    return this.children;
+  }
+
+  getRefs() {
+    return this.refs;
+  }
+
   _registerEvents(eventBus: EventBus<Events>) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -80,6 +92,8 @@ export default class Block<P = any> {
     if (!response) {
       return;
     }
+
+    this.children = {};
     this._render();
   }
 
@@ -134,9 +148,7 @@ export default class Block<P = any> {
     // Хак, чтобы вызвать CDM только после добавления в DOM
     if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
       setTimeout(() => {
-        if (
-          this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE
-        ) {
+        if (this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
           this.eventBus().emit(Block.EVENTS.FLOW_CDM);
         }
       }, 100);

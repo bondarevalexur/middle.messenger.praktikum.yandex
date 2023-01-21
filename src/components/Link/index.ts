@@ -3,7 +3,7 @@ import Block from "../../core/Block";
 import "./link.scss";
 
 interface LinkProps {
-  text: string;
+  text: string | Block | Indexed;
   href: string;
   id?: string;
   className?: string;
@@ -15,8 +15,7 @@ class Link extends Block {
     const onClick = (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      props?.href &&
-        window.location.replace((window.location.pathname, props.href));
+      props?.href && window.location.replace((window.location.pathname, props.href));
       props?.onClick && props?.onClick(e);
     };
 
@@ -26,7 +25,7 @@ class Link extends Block {
   render() {
     // language=hbs
     return `<a href="{{href}}" id="{{id}}" class="partial--link {{className}}">{{text}}</a>
-        `;
+    `;
   }
 }
 
