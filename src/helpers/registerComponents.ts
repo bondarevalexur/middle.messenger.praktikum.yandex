@@ -1,15 +1,15 @@
 import { registerComponent } from "../core";
-import Main from "../components/layout/Main";
-import Header from "../components/layout/Header";
-import DevLinks from "../components/layout/DevLinks";
-import Button from "../components/Button";
-import Link from "../components/Link";
-import Input from "../components/Input";
-import ChatCard from "../components/ChatCard";
-import UserCard from "../components/UserCard";
-import DataValue from "../components/DataValue";
-import Message from "../components/Message";
-import TextArea from "../components/TextArea";
+import Main from "../pages/components/layout/Main";
+import Header from "../pages/components/layout/Header";
+import DevLinks from "../pages/components/layout/DevLinks";
+import Button from "../pages/components/Button";
+import Link from "../pages/components/Link";
+import Input from "../pages/components/Input";
+import ChatCard from "../pages/components/ChatCard";
+import UserCard from "../pages/components/UserCard";
+import DataValue from "../pages/components/DataValue";
+import Message from "../pages/components/Message";
+import TextArea from "../pages/components/TextArea";
 import Chat from "../pages/Chat";
 import Error404 from "../pages/Error404";
 import Error500 from "../pages/Error500";
@@ -17,7 +17,7 @@ import Profile from "../pages/Profile";
 import Chats from "../pages/Chats";
 import CreateProfile from "../pages/CRProfile";
 import Login from "../pages/Login";
-import AsyncSearch from "../components/AsyncSearch";
+import AsyncSearch from "../pages/components/AsyncSearch";
 
 export const registerComponents = () => {
   registerComponent(Main);

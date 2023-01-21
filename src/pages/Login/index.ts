@@ -5,7 +5,7 @@ import "./style.scss";
 import { data } from "../../data/data";
 import { validateLogin } from "../../helpers/validate";
 import controller from "./controller";
-import Input from "../../components/Input";
+import Input from "../components/Input";
 
 class Login extends Block {
   constructor() {

@@ -10,7 +10,7 @@ import {
   validatePassword,
 } from "../../helpers/validate";
 import { requests } from "../../core/HTTPservise";
-import Input from "../../components/Input";
+import Input from "../components/Input";
 
 class ChangePassword extends Block {
   constructor() {

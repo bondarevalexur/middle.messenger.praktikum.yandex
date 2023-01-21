@@ -1,7 +1,7 @@
-import Block from "../../core/Block";
+import Block from "../../../core/Block";
 
 import "./style.scss";
-import convertDate from "../../helpers/convertDate";
+import convertDate from "../../../helpers/convertDate";
 
 class Message extends Block {
   constructor(props: Indexed) {

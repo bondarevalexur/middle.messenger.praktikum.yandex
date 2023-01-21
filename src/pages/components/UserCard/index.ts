@@ -1,7 +1,7 @@
-import Block from "../../core/Block";
+import Block from "../../../core/Block";
 
 import "./style.scss";
-import { chatsStore } from "../../api/chatsStore";
+import { chatsStore } from "../../../api/chatsStore";
 
 class UserCard extends Block {
   urlSearchParams = new URLSearchParams(window.location.search);
