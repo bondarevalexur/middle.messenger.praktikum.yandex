@@ -3,6 +3,7 @@ import Block from "../../core/Block";
 import "./error500.scss";
 
 class Error500 extends Block {
+  static componentName = "Error500";
   render() {
     // language=hbs
     return `

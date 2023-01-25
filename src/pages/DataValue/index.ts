@@ -1,4 +1,4 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./style.scss";
 
@@ -12,6 +12,7 @@ interface DataValueProps {
 }
 
 class DataValue extends Block {
+  static componentName = "DataValue";
   constructor(props: DataValueProps) {
     super(props);
   }

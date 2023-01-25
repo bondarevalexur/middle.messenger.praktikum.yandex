@@ -1,9 +1,10 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./style.scss";
-import { chatsStore } from "../../../api/chatsStore";
+import { chatsStore } from "../../api/chatsStore";
 
 class UserCard extends Block {
+  static componentName = "UserCard";
   urlSearchParams = new URLSearchParams(window.location.search);
   chatId = this.urlSearchParams.get("id");
 

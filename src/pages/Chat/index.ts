@@ -9,6 +9,7 @@ import { userStore } from "../../api/userStore";
 import isEqual from "../../helpers/isEqueal";
 
 class Chat extends Block {
+  static componentName = "Chat";
   public isAddUser = false;
   public isUser = false;
 

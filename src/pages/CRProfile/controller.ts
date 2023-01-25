@@ -1,6 +1,6 @@
 import { userStore } from "../../api/userStore";
 import { Block } from "../../core";
-import Input from "../components/Input";
+import Input from "../Input";
 
 function controller(getComponent: () => Block) {
   const onButton = async (e: MouseEvent) => {

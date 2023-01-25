@@ -31,3 +31,8 @@
 - Netlify https://creative-bublanina-0d7cdb.netlify.app/
 - https://www.figma.com/file/EXJ58Uow0CxCKlxIEqytoC/Direct-messaging-app-(Community)?node-id=0%3A1
 - https://www.figma.com/file/Tn8upaQRUOP53N8EvF87eg/Chat
+
+
+    "dev": "cp -R ./src/assets ./dist && parcel src/index.html --no-source-maps --no-cache --open",
+    "build": "cp -R ./src/assets ./dist && parcel build src/index.html  --no-source-maps --no-cache",
+    "start": "npm run build && node ./server.js",

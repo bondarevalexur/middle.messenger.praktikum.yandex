@@ -10,9 +10,10 @@ import {
   validatePassword,
 } from "../../helpers/validate";
 import { requests } from "../../core/HTTPservise";
-import Input from "../components/Input";
+import Input from "../Input";
 
 class ChangePassword extends Block {
+  static componentName = "ChangePassword";
   constructor() {
     const onButton = async (e: MouseEvent) => {
       e.preventDefault();

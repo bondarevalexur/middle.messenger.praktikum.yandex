@@ -2,6 +2,14 @@ import EventBus from "./EventBus";
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 
+type Nullable<T> = T | null | undefined;
+type Keys<T extends Record<string, unknown>> = keyof T;
+type Values<T extends Record<string, unknown>> = T[Keys<T>];
+
+export interface BlockConstructable<P = any> {
+  new (props: P): Block<P>;
+}
+
 interface BlockMeta<P = any> {
   props: P;
 }
@@ -136,7 +144,7 @@ export default class Block<P = any> {
   }
 
   _update() {
-    this.state?.onUpdate();
+    if (this.state?.onUpdate) this.state.onUpdate();
     // this._meta?.props?.onUpdate(this);
   }
 
@@ -155,6 +163,10 @@ export default class Block<P = any> {
     }
 
     return this.element!;
+  }
+
+  getElement() {
+    return this.element;
   }
 
   _makePropsProxy(props: any): any {

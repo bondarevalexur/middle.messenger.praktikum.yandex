@@ -3,6 +3,7 @@ import Block from "../../core/Block";
 import "./error404.scss";
 
 class Error404 extends Block {
+  static componentName = "Error404";
   render() {
     // language=hbs
     return `

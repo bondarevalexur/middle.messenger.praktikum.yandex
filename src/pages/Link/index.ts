@@ -1,4 +1,4 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./link.scss";
 
@@ -11,11 +11,14 @@ interface LinkProps {
 }
 
 class Link extends Block {
+  static componentName = "Link";
+
   constructor(props: LinkProps) {
     const onClick = (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      props?.href && window.location.replace((window.location.pathname, props.href));
+      // props?.href && window.location.replace((window.location.pathname, props.href));
+      props?.href && window.router.go(props?.href);
       props?.onClick && props?.onClick(e);
     };
 
