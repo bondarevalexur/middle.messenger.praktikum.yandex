@@ -1,13 +1,10 @@
 import Block from "../../core/Block";
 
-import router from "../../core/Router";
-import { requests } from "../../core/HTTPservise";
-import parseResp from "../../helpers/parse";
-
 import { chatsStore } from "../../api/chatsStore";
 import isEqual from "../../helpers/isEqueal";
 
 class Chats extends Block {
+  static componentName = "Chats";
   constructor(props: Indexed) {
     super({
       ...props,

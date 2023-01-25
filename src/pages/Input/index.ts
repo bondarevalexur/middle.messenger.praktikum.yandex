@@ -1,4 +1,4 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./input.scss";
 
@@ -17,6 +17,7 @@ interface InputProps {
 }
 
 class Input extends Block {
+  static componentName = "Input";
   constructor({
     onChange = () => {},
     type = "text",
@@ -75,7 +76,6 @@ class Input extends Block {
   }
 
   getError() {
-    // console.log(this.state.error);
     return this.state.error;
   }
 

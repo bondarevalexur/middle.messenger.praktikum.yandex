@@ -1,8 +1,9 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./input.scss";
 
 class AsyncSearch extends Block {
+  static componentName = "AsyncSearch";
   constructor(props: Indexed) {
     super({ ...props });
   }

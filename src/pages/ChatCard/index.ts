@@ -1,10 +1,11 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./style.scss";
-import convertDate from "../../../helpers/convertDate";
-import { chatsStore } from "../../../api/chatsStore";
+import convertDate from "../../helpers/convertDate";
+import { chatsStore } from "../../api/chatsStore";
 
 class ChatCard extends Block {
+  static componentName = "ChatCard";
   constructor({ props }: Indexed) {
     super({
       ...props,

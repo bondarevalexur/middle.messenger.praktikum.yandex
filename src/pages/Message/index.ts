@@ -1,9 +1,10 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./style.scss";
-import convertDate from "../../../helpers/convertDate";
+import convertDate from "../../helpers/convertDate";
 
 class Message extends Block {
+  static componentName = "Message";
   constructor(props: Indexed) {
     const isMyMess = window.store.getState()?.user?.id === props.this.user_id;
     super({ ...props.this, isMyMess, time: convertDate(props.this?.time) });

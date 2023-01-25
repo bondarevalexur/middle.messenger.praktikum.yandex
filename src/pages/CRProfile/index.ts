@@ -13,6 +13,7 @@ import {
 import controller from "./controller";
 
 class CRProfile extends Block {
+  static componentName = "CRProfile";
   constructor() {
     const getComponent = () => this;
 

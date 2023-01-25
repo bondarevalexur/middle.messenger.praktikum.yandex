@@ -29,7 +29,7 @@ export default class HTTPTransport {
     return this.request(url, { method: Methods.GET });
   }
 
-  post(url: string, data?: Record<string, any> | number): Promise<XMLHttpRequest> {
+  post(url: string, data?: Record<string, any> | number | string): Promise<XMLHttpRequest> {
     return this.request(url, { data: data, method: Methods.POST });
   }
 
@@ -57,7 +57,7 @@ export default class HTTPTransport {
     url = `${this._urlPrefix}${url}`;
 
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
+      const xhr = new window.XMLHttpRequest();
       xhr.open(method, url);
 
       Object.entries(headers).forEach(([key, value]) => {
@@ -80,7 +80,12 @@ export default class HTTPTransport {
       if (method === Methods.GET || !data) {
         xhr.send();
       } else {
-        data.constructor === FormData ? xhr.send(data) : xhr.send(JSON.stringify(data));
+        if (headers?.["Content-Type"] === "application/json") {
+          data.constructor = xhr.send(JSON.stringify(data));
+        } else {
+          data.constructor = xhr.send(data);
+        }
+        // data.constructor === FormData ? xhr.send(data) : xhr.send(JSON.stringify(data));
       }
     });
   }

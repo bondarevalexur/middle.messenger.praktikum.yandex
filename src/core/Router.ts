@@ -1,6 +1,7 @@
 import Block from "./Block";
 import { routes } from "../index";
 import EventBus from "./EventBus";
+import e from "express";
 
 function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
@@ -51,7 +52,7 @@ class Route {
   }
 }
 
-class Router {
+export class Router {
   private static __instance: Router;
   private routes: Route[] = [];
   private currentRoute: Route | null = null;
@@ -101,7 +102,6 @@ class Router {
   }
 
   private _onRoute(pathname: string) {
-    console.log(pathname);
     const route = this.getRoute(pathname);
 
     if (!route) {
@@ -125,10 +125,12 @@ class Router {
   }
 
   public go(pathname: string) {
-    this.history.pushState({}, "", pathname);
+
     if (routes.find((route) => route.pathname === pathname.split("?")[0])) {
+      this.history.pushState({}, "", pathname);
       this._onRoute(pathname);
     } else {
+      this.history.pushState({}, "", "/error404");
       this._onRoute("/error404");
     }
   }
