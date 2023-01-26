@@ -5,9 +5,10 @@ import "./style.scss";
 import { data } from "../../data/data";
 import { validateLogin } from "../../helpers/validate";
 import controller from "./controller";
-import Input from "../components/Input";
+import Input from "../Input";
 
 class Login extends Block {
+  static componentName = "Login";
   constructor() {
     window.store.on("changed", () => {
       this.setState(window.store.getState());

@@ -5,8 +5,8 @@ import Auth from "../../api/Auth";
 import { userStore } from "../../api/userStore";
 
 class Profile extends Block {
+  static componentName = "Profile";
   constructor(props: Indexed) {
-    console.log(props);
     super({
       ...props,
       onEdit: () => {

@@ -1,4 +1,4 @@
-import Block from "../../../core/Block";
+import Block from "../../core/Block";
 
 import "./style.scss";
 
@@ -16,6 +16,7 @@ interface TextAreaProps {
 }
 
 class TextArea extends Block {
+  static componentName = "TextArea";
   constructor({
     onChange = () => {},
     name,
